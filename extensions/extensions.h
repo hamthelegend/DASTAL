@@ -12,4 +12,10 @@ int scanInt() {
     return x;
 }
 
+double scanDouble() {
+    double x;
+    scanf("%f", &x);
+    return x;
+}
+
 #endif //DASTAL_EXTENSIONS_H
