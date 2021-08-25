@@ -4,3 +4,4 @@ project(DASTAL C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(M01A01 "module01/activity01.c" extensions/extensions.h)
+add_executable(M02A01 "module01/activity02.c" extensions/extensions.h)

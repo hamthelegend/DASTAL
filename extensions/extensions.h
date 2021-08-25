@@ -18,4 +18,10 @@ double scanDouble() {
     return x;
 }
 
+void printArray(int array[], int size, char *name) {
+    for (int i = 0; i < size; i++) {
+        printf("%s[%d] = %d\n", name, i, array[i]);
+    }
+}
+
 #endif //DASTAL_EXTENSIONS_H

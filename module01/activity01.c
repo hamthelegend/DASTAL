@@ -9,14 +9,14 @@
 int main() {
     printf("Enter the amount of elements in the array: ");
     int size = scanInt();
-    int arr[size];
+    int array[size];
     for (int i = 0; i < size; i++) {
-        printf("arr[%d] = ", i);
-        arr[i] = scanInt();
+        printf("array[%d] = ", i);
+        array[i] = scanInt();
     }
     int sum = 0;
     for (int i = 0; i < size; i++) {
-        sum += arr[i];
+        sum += array[i];
     }
     printf("The sum of the array elements = %d", sum);
 }
