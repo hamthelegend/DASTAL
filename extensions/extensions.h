@@ -14,7 +14,7 @@ int scanInt() {
 
 double scanDouble() {
     double x;
-    scanf("%f", &x);
+    scanf("%lf", &x);
     return x;
 }
 
