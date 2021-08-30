@@ -4,7 +4,7 @@
 //
 
 #include <bits/stdc++.h>
-#include "../extensions/IntArray.h"
+#include "../extensions/Array.h"
 using namespace std;
 
 int main() {
@@ -13,7 +13,7 @@ int main() {
     cin >> size;
 
     cout << endl << "Assign the int at each position: " << endl;
-    IntArray array("array", size);
+    Array<int> array("array", size);
     for (int i = 0; i < size; i++) {
         int element;
         cout << "array[" << i << "] = ";
@@ -23,7 +23,11 @@ int main() {
     int numberToDelete;
     cout << endl << "Enter the number to be deleted: ";
     cin >> numberToDelete;
-    array.remove(numberToDelete);
+    try {
+        array.remove(numberToDelete);
+    } catch (const out_of_range& e) {
+        cout << e.what() << endl;
+    }
     cout << endl << "The array after deletion: " << endl;
     array.print();
 }
