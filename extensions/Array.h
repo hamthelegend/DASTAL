@@ -10,36 +10,37 @@
 
 const int SIZE_MULTIPLIER = 2;
 
-class IntArray {
+template <typename T>
+class Array {
 public:
     std::string name;
     int size = 0;
 private:
     int memorySize;
-    int* array;
+    T* array;
 public:
-    IntArray(std::string name, int size) {
+    Array(std::string name, int size) {
         this->name = std::move(name);
         memorySize = size * SIZE_MULTIPLIER;
-        this->array = new int[memorySize];
+        this->array = new T[memorySize];
     }
     void doubleSize() {
-        int* newArray = new int [memorySize * SIZE_MULTIPLIER];
+        T* newArray = new T[memorySize * SIZE_MULTIPLIER];
         for (int i = 0; i < size; i++) {
             newArray[size] = array[size];
         }
         delete [] array;
         this->array = newArray;
     }
-    int getIndex(int element) {
+    int getIndex(T element) {
         for (int i = 0; i < size; i++) {
             if (array[i] == element) {
                 return i;
             }
         }
-        return -1;
+        throw std::out_of_range("Cannot find element.");
     }
-    void add(int index, int element) {
+    void add(int index, T element) {
         if (index > size || index < 0) {
             throw std::out_of_range("");
         }
@@ -61,7 +62,7 @@ public:
         }
         size--;
     }
-    void remove(int element) {
+    void remove(T element) {
         removeAtIndex(getIndex(element));
     }
     void print() {
