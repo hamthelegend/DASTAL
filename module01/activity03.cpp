@@ -18,7 +18,7 @@ int main() {
         int element;
         cout << "array[" << i << "] = ";
         cin >> element;
-        array.add(i, element);
+        array.add(element);
     }
     int numberToDelete;
     cout << endl << "Enter the number to be deleted: ";
