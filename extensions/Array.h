@@ -12,26 +12,23 @@ const int SIZE_MULTIPLIER = 2;
 
 template <typename T>
 class Array {
+
 public:
     std::string name;
     int size = 0;
+
 private:
     int memorySize;
     T* array;
+
 public:
+
     Array(std::string name, int size) {
         this->name = std::move(name);
         memorySize = size * SIZE_MULTIPLIER;
         this->array = new T[memorySize];
     }
-    void doubleSize() {
-        T* newArray = new T[memorySize * SIZE_MULTIPLIER];
-        for (int i = 0; i < size; i++) {
-            newArray[size] = array[size];
-        }
-        delete [] array;
-        this->array = newArray;
-    }
+
     int getIndex(T element) {
         for (int i = 0; i < size; i++) {
             if (array[i] == element) {
@@ -40,12 +37,10 @@ public:
         }
         throw std::out_of_range("Cannot find element.");
     }
+
     void add(int index, T element) {
         if (index > size || index < 0) {
             throw std::out_of_range("");
-        }
-        if (size + 1 > memorySize) {
-            doubleSize();
         }
         for (int i = size - 1; i >= index; i--) {
             array[i + 1] = array[i];
@@ -53,6 +48,11 @@ public:
         array[index] = element;
         size++;
     }
+
+    void add(T element) {
+        add(size, element);
+    }
+
     void removeAtIndex(int index) {
         if (index > size - 1 || index < 0) {
             throw std::out_of_range("");
@@ -62,14 +62,17 @@ public:
         }
         size--;
     }
+
     void remove(T element) {
         removeAtIndex(getIndex(element));
     }
+
     void print() {
         for (int i = 0; i < size; i++) {
             std::cout << name << "[" << i << "] = " << array[i] << std::endl;
         }
     }
+
 };
 
 
